@@ -12,4 +12,7 @@ public class Semaforo : MonoBehaviour {
 	void Update () {
 	
 	}
+
+
+
 }
