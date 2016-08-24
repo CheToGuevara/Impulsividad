@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Coche : MonoBehaviour {
+public class Car : MonoBehaviour {
 
     public float power = 3;
     public float maxspeed = 5;
@@ -10,15 +10,37 @@ public class Coche : MonoBehaviour {
     public Vector3 curspeed;
     Rigidbody myrigidbody;
 
+    private bool stopped=false;
+
+    public bool Stopped
+    {
+        get
+        {
+            return stopped;
+        }
+        set
+        {
+            stopped = true;
+        }
+    }
+
     // Use this for initialization
     void Start()
     {
+        stopped = false;
         myrigidbody = GetComponent<Rigidbody>();
     }
 
 
     void FixedUpdate()
     {
+
+        if (stopped)
+        {
+            myrigidbody.velocity = new Vector3(0, 0, 0);
+            return;
+        }
+        
         curspeed = myrigidbody.velocity;
 
         if (curspeed.magnitude > maxspeed)
@@ -34,7 +56,8 @@ public class Coche : MonoBehaviour {
         }
         if (Input.GetKey(KeyCode.S))
         {
-            myrigidbody.AddForce(-(transform.forward) * (power / 2));
+            if (curspeed.z > 0.001)
+                myrigidbody.AddForce(0,0,-1/ curspeed.z);
             myrigidbody.drag = friction;
         }
         
@@ -57,7 +80,9 @@ public class Coche : MonoBehaviour {
 
         if (!gas)
         {
-            myrigidbody.drag = friction * 2;
+            myrigidbody.drag = friction ;
         }
     }
+
+    
 }
