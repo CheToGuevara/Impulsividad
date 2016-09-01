@@ -20,6 +20,7 @@ public class RoadStop : MonoBehaviour {
         Debug.Log("Para");
         Car myCar = GameObject.Find("Coche").GetComponent<Car>();
         myCar.Stopped = false;
+
         
 
     }
