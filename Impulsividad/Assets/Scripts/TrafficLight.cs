@@ -8,6 +8,8 @@ public class TrafficLight : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         m_anim = GetComponent<Animator>();
+        m_anim.SetBool("Red", false);
+        m_anim.SetBool("Green", true);
 	}
 	
 	// Update is called once per frame

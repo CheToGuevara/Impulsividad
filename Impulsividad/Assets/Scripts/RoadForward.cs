@@ -22,7 +22,7 @@ public class RoadForward : MonoBehaviour {
     {
         Debug.Log("Tocado");
         
-        myRoad.RoadForward();
+        myRoad.RoadForward(Random.Range(1,4));
         myTrafficLight.setRed(true);
 
 

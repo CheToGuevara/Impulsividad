@@ -57,8 +57,8 @@ public class Car : MonoBehaviour {
         if (Input.GetKey(KeyCode.S))
         {
             if (curspeed.z > 0.001)
-                myrigidbody.AddForce(0,0,-1/ curspeed.z);
-            myrigidbody.drag = friction;
+                myrigidbody.AddForce(0,0,-curspeed.z);
+            myrigidbody.drag = friction*3;
         }
         
 
