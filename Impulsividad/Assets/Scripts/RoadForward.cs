@@ -21,7 +21,7 @@ public class RoadForward : MonoBehaviour {
     void OnTriggerEnter(Collider other)
     {
         Debug.Log("Tocado");
-        
+        Debug.Log(Time.time);
         myRoad.RoadForward(Random.Range(1,4));
         myTrafficLight.setRed(true);
 

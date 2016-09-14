@@ -13,6 +13,7 @@ public class Road : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         last_seconds = roads.Length * 20 + 20;
+        
         current_road = 0;
         current_stop = stoproad.Length - 1;
 	}
@@ -25,7 +26,6 @@ public class Road : MonoBehaviour {
     public void RoadForward(int seconds)
     {
         Debug.Log(seconds);
-        Debug.Log(Time.time);
         for (int i = 0; i < seconds;i++ )
         {
             roads[current_road].transform.transform.position = new Vector3(0, 0, last_seconds);
@@ -35,8 +35,6 @@ public class Road : MonoBehaviour {
         stoproad[current_stop].transform.position = new Vector3(0, 0, last_seconds);
         stoproad[current_stop].transform.Translate(0, 0, 20 * (seconds));
         current_stop = (current_stop + 1) % stoproad.Length;
-
-
         last_seconds += seconds * 20/*Anterior*/ +20 /*Semaforo*/;
             
         
