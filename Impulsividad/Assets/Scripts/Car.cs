@@ -49,12 +49,14 @@ public class Car : MonoBehaviour {
             curspeed *= maxspeed;
         }
 
-        if (Input.GetKey(KeyCode.W))
+        float pedal = Input.GetAxis("Vertical");
+
+        if (pedal > 0)
         {
             myrigidbody.AddForce(transform.forward * power);
             myrigidbody.drag = friction;
         }
-        if (Input.GetKey(KeyCode.S))
+        if (pedal < 0)
         {
             if (curspeed.z > 0.001)
                 myrigidbody.AddForce(0,0,-curspeed.z);
