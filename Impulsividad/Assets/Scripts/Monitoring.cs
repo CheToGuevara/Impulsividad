@@ -14,6 +14,7 @@ public class Monitoring : MonoBehaviour {
     public GameObject ExplainCanvas;
     public GameObject CountDownCanvas;
     public Text CountText;
+    public GameObject RoadGO;
 
     System.IO.FileStream oFileStream = null;
 
@@ -58,8 +59,8 @@ public class Monitoring : MonoBehaviour {
 
 
 
-        Debug.Log("Linea a escribir");
-        Debug.Log(line);
+        //Debug.Log("Linea a escribir");
+        //Debug.Log(line);
         line = string.Concat(line, "\n");
         oFileStream.Write(System.Text.Encoding.UTF8.GetBytes (line), 0, line.Length);
 
@@ -79,6 +80,12 @@ public class Monitoring : MonoBehaviour {
         ExplainCanvas.SetActive(false);
         CountDownCanvas.SetActive(true);
         InvokeRepeating("Countdown", 1,1);
+    }
+
+    public void EndofRoad()
+    {
+        seconds = Random.Range(1,4);
+        RoadGO.GetComponent<Road>().RoadForward(seconds);
     }
 
     void Countdown()

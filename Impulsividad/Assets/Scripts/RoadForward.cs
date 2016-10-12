@@ -22,7 +22,8 @@ public class RoadForward : MonoBehaviour {
     {
         Debug.Log("Tocado");
         Debug.Log(Time.time);
-        myRoad.RoadForward(Random.Range(1,4));
+        GameObject.Find("Monitor").GetComponent<Monitoring>().EndofRoad();
+        //myRoad.RoadForward();
         myTrafficLight.setRed(true);
 
 
